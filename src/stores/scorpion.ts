@@ -10,12 +10,11 @@ export const getScorpionProducts = async (
     headless: true,
     slowMo: 50,
     args: ["--window-size=1920,1920", "--no-sandbox"], // Set the window size
-  }); // slowMo adds a delay between actions
+  });
   const page = await browser.newPage();
 
   await page.setViewport({ width: 1920, height: 1080 });
 
-  // Example URL, modify based on your target website
   await page.goto(
     `https://www.scorpion.com.mx/mayorista/catalogsearch/result/?q=${encodeURIComponent(
       productToLookFor
