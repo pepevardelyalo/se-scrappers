@@ -7,9 +7,9 @@ export const getScorpionProducts = async (
   let result: IProductResult[] = [];
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     slowMo: 50,
-    args: ["--window-size=1920,1920"], // Set the window size
+    args: ["--window-size=1920,1920", "--no-sandbox"], // Set the window size
   }); // slowMo adds a delay between actions
   const page = await browser.newPage();
 
