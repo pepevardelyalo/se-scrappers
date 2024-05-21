@@ -8,7 +8,7 @@
     "build": "npx tsc",
     "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
+    "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache && npx tsc"
   },
   "keywords": [],
   "author": "",
