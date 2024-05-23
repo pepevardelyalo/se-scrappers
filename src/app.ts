@@ -1,6 +1,7 @@
 import express, { Request, Response, Application } from "express";
 import { getScorpionProducts } from "./stores/scorpion";
 import dotenv from "dotenv";
+import { getExitoProducts } from "./stores/exito";
 
 //For env File
 dotenv.config();
@@ -17,6 +18,20 @@ app.get("/scorpion/:productToLookFor", async (req: Request, res: Response) => {
 
   try {
     const products = await getScorpionProducts(productToLookFor);
+    res.json(products);
+  } catch (error) {
+    console.error("Error:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while scraping the website." });
+  }
+});
+
+app.get("/exito/:productToLookFor", async (req: Request, res: Response) => {
+  const { productToLookFor } = req.params;
+
+  try {
+    const products = await getExitoProducts(productToLookFor);
     res.json(products);
   } catch (error) {
     console.error("Error:", error);
